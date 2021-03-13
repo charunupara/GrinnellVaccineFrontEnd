@@ -40,7 +40,7 @@ class Form extends React.Component {
     console.log(this.state.value);
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:8000", {
+      const res = await fetch("https://grinnellvaccine-server.herokuapp.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
