@@ -108,14 +108,7 @@ class Form extends React.Component {
           to view current availability.
         </p>
         <div id="footer-text">
-          Built by{" "}
-          <a target="_blank" href="https://github.com/govindsartaj">
-            Govind Brahmanyapura
-          </a>{" "}
-          and{" "}
-          <a target="_blank" href="https://github.com/charunupara">
-            Charun Upara
-          </a>
+          Built by two Class of 2021 Grinnell students.
         </div>
       </>
     );
