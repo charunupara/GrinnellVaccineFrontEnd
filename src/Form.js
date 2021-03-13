@@ -69,7 +69,7 @@ class Form extends React.Component {
     return (
       <>
         <p>
-          Enter your email below receive updates on the availability of COVID
+          Enter your email below to receive updates on the availability of COVID
           vaccine appointments in Iowa.
         </p>
         <form onSubmit={this.handleSubmit}>
@@ -92,15 +92,30 @@ class Form extends React.Component {
 
           <input
             type="submit"
+            id="submit-btn"
             disabled={
               parseInt(this.state.captchaValue) !== this.state.captchaSum
             }
             value="Subscribe"
           />
         </form>
-
+        <p>Checks appointment availability every minute.</p>
+        <p>
+          Visit{" "}
+          <a target="_blank" href="https://www.vaccinespotter.org/IA/">
+            Vaccine Spotter
+          </a>{" "}
+          to view current availability.
+        </p>
         <div id="footer-text">
-          Made by Govind Brahmanyapura and Charun Upara
+          Built by{" "}
+          <a target="_blank" href="https://github.com/govindsartaj">
+            Govind Brahmanyapura
+          </a>{" "}
+          and{" "}
+          <a target="_blank" href="https://github.com/charunupara">
+            Charun Upara
+          </a>
         </div>
       </>
     );

@@ -10,10 +10,18 @@ form {
 #email-input, #math-captcha {
     margin: 0.3rem;
     width: 15rem;
+    height: 1.5rem;
+}
+
+#submit-btn {
+  width: 16rem;
 }
 
 #footer-text {
-    text-align: center !important;
-    position: fixed;
-    bottom: 0;
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
