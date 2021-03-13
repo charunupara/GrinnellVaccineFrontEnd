@@ -1,13 +1,15 @@
-import Form from './Form';
+import Home from "./Home";
+import Unsubscribe from "./Unsubscribe";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div>
-      <h1>Subscribe to receive updates on available COVID vaccines in Iowa</h1>
-      <Form />
-    </div>
-   
-
+    <>
+      <Router>
+        <Route exact path="/" component={Home}/>
+        <Route path="/unsubscribe/:emailToken" component={Unsubscribe} />
+      </Router>
+    </>
   );
 }
 
