@@ -9,10 +9,8 @@ export default function Unsubscribe() {
       const res = await fetch(
         "https://grinnellvaccine-server.herokuapp.com/unsubscribe/" + emailToken
       );
-      const resJSON = res.data;
-      if (resJSON.success) {
-        alert(resJSON.success);
-      }
+      alert("Successfully unsubscribed. Stay safe!")
+      window.location = "https://grinnellvaccine.herokuapp.com/"
     } catch (err) {
       console.log(err);
     }
