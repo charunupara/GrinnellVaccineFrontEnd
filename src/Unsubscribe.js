@@ -8,7 +8,7 @@ export default function Unsubscribe() {
     try {
       // eslint-disable-next-line no-unused-vars
       const res = await fetch(
-        "https://www.grinnellvaccine.tech/unsubscribe/" + emailToken
+        "https://www.grinnellvaccine-server.herokuapp.com/unsubscribe/" + emailToken
       );
       alert("Successfully unsubscribed. Stay safe!");
       window.location = "https://www.grinnellvaccine.tech/";
