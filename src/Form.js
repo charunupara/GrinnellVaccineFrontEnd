@@ -10,6 +10,7 @@ class Form extends React.Component {
       captchaNum1: "",
       captchaNum2: "",
       captchaSum: "",
+      isLoading: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,7 +38,7 @@ class Form extends React.Component {
   }
 
   async handleSubmit(e) {
-    console.log(this.state.value);
+    this.setState({ isLoading: true });
     e.preventDefault();
     try {
       const res = await fetch("https://grinnellvaccine-server.herokuapp.com", {
@@ -50,6 +51,9 @@ class Form extends React.Component {
 
       console.log(res);
       const resJSON = await res.json();
+      this.setState({
+        isLoading: false,
+      });
       if (resJSON.error) {
         alert(resJSON.error);
       } else {
@@ -94,9 +98,10 @@ class Form extends React.Component {
             type="submit"
             id="submit-btn"
             disabled={
-              parseInt(this.state.captchaValue) !== this.state.captchaSum
+              parseInt(this.state.captchaValue) !== this.state.captchaSum ||
+              this.state.isLoading
             }
-            value="Subscribe"
+            value={this.state.isLoading ? "Loading..." : "Subscribe"}
           />
         </form>
         <p>Checks appointment availability every minute.</p>
@@ -109,7 +114,8 @@ class Form extends React.Component {
         </p>
         <div id="footer-text">
           <p id="disclaimer">
-            Disclaimer: Vaccine availability data is collected from vaccinespotter.org. The data could be inaccurate/not up-to-date.
+            Disclaimer: Vaccine availability data is collected from
+            vaccinespotter.org. The data could be inaccurate/not up-to-date.
           </p>
           Built by two Class of 2021 Grinnell students.
         </div>
