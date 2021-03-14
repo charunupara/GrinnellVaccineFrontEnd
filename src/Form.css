@@ -22,7 +22,7 @@ form {
 }
 
 #footer-text {
-  position: fixed;
+  position: relative;
   bottom: 0;
   margin-bottom: 0.5rem;
   width: 100%;
