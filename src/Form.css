@@ -17,6 +17,10 @@ form {
   width: 16rem;
 }
 
+#disclaimer {
+  color: grey;
+}
+
 #footer-text {
   position: fixed;
   bottom: 0;
