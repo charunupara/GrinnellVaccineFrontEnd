@@ -5,14 +5,18 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: "",
+      email: "",
+      zipcode: "",
+      radius: "",
       captchaValue: "",
       captchaNum1: "",
       captchaNum2: "",
       captchaSum: "",
       isLoading: false,
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handleZipcodeChange = this.handleZipcodeChange.bind(this);
+    this.handleRadiusChange = this.handleRadiusChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCaptchaChange = this.handleCaptchaChange.bind(this);
     this.createMathCaptcha = this.createMathCaptcha.bind(this);
@@ -22,8 +26,16 @@ class Form extends React.Component {
     this.setState({ captchaValue: e.target.value });
   }
 
-  handleChange(e) {
-    this.setState({ value: e.target.value });
+  handleEmailChange(e) {
+    this.setState({ email: e.target.value });
+  }
+
+  handleZipcodeChange(e) {
+    this.setState({ zipcode: e.target.value });
+  }
+
+  handleRadiusChange(e) {
+    this.setState({ radius: e.target.value });
   }
 
   createMathCaptcha() {
@@ -46,7 +58,11 @@ class Form extends React.Component {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email: this.state.value }),
+        body: JSON.stringify({
+          email: this.state.email,
+          zipcode: this.state.zipcode,
+          radius: this.state.radius,
+        }),
       });
 
       console.log(res);
@@ -73,16 +89,38 @@ class Form extends React.Component {
     return (
       <>
         <p>
-          Enter your email below to receive updates on the availability of COVID
+          Enter your <strong>email</strong>, <strong>zipcode</strong>, and <strong>max travel distance</strong> below to receive updates on the availability of COVID
           vaccine appointments in Iowa.
+        </p>
+        <p>
+          We will send you an alert when appointments are available within the max distance from your location.
         </p>
         <form onSubmit={this.handleSubmit}>
           <input
             type="email"
             id="email-input"
             placeholder="Email"
-            value={this.state.value}
-            onChange={this.handleChange}
+            value={this.state.email}
+            onChange={this.handleEmailChange}
+            required
+          />
+          <input
+            type="text"
+            id="zip-input"
+            placeholder="Zipcode"
+            pattern="[0-9]{5}"
+            value={this.state.zipcode}
+            onChange={this.handleZipcodeChange}
+            required
+          />
+          <input
+            type="number"
+            id="radius-input"
+            placeholder="Max distance (1-400 miles)"
+            value={this.state.radius}
+            max={400}
+            min={1}
+            onChange={this.handleRadiusChange}
             required
           />
           <input

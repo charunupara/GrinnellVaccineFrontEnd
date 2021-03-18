@@ -7,15 +7,12 @@ form {
   display: inline-grid;
 }
 
-#email-input, #math-captcha {
+#email-input, #math-captcha, #radius-input, #zip-input {
     margin: 0.3rem;
     width: 15rem;
     height: 1.5rem;
 }
 
-#submit-btn {
-  width: 16rem;
-}
 
 #disclaimer {
   color: grey;
