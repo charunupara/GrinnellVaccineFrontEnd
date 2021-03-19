@@ -1,5 +1,6 @@
 import React from "react";
 import "./Form.css";
+import { zips } from "./iowaZipcodes";
 
 class Form extends React.Component {
   constructor(props) {
@@ -52,6 +53,16 @@ class Form extends React.Component {
   async handleSubmit(e) {
     this.setState({ isLoading: true });
     e.preventDefault();
+    const matchedZip = zips.filter(
+      (a) => a.fields.zip === this.state.zipcode
+    )[0];
+    console.log(matchedZip);
+    if (matchedZip === undefined) {
+      alert("Invalid zipcode!");
+      window.location = "https://www.grinnellvaccine.tech/";
+      return false;
+    }
+
     try {
       const res = await fetch("https://grinnellvaccine-server.herokuapp.com", {
         method: "POST",
@@ -89,11 +100,13 @@ class Form extends React.Component {
     return (
       <>
         <p>
-          Enter your <strong>email</strong>, <strong>zipcode</strong>, and <strong>max travel distance</strong> below to receive updates on the availability of COVID
-          vaccine appointments in Iowa.
+          Enter your <strong>email</strong>, <strong>zipcode</strong>, and{" "}
+          <strong>max travel distance</strong> below to receive updates on the
+          availability of COVID vaccine appointments in Iowa.
         </p>
         <p>
-          We will send you an alert when appointments are available within the max distance from your location.
+          We will send you an alert when appointments are available within the
+          max distance from your location.
         </p>
         <form onSubmit={this.handleSubmit}>
           <input

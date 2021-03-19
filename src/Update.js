@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { zips } from "./iowaZipcodes";
 import "./Update.css";
 
 export default function Update() {
@@ -14,15 +15,27 @@ export default function Update() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(emailToken);
+    const matchedZip = zips.filter(
+      (a) => a.fields.zip === this.state.zipcode
+    )[0];
+    console.log(matchedZip);
+    if (matchedZip === undefined) {
+      alert("Invalid zipcode!");
+      window.location = "https://www.grinnellvaccine.tech/";
+      return false;
+    }
     try {
       // eslint-disable-next-line no-unused-vars
-      const res = await fetch("https://grinnellvaccine-server.herokuapp.com/" + emailToken, {
-        body: JSON.stringify({ zipcode, radius }),
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await fetch(
+        "https://grinnellvaccine-server.herokuapp.com/" + emailToken,
+        {
+          body: JSON.stringify({ zipcode, radius }),
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       alert("Successfully updated. Stay safe!");
       window.location = "https://www.grinnellvaccine.tech";
     } catch (err) {
@@ -32,7 +45,9 @@ export default function Update() {
 
   const setInitialInfo = async () => {
     try {
-      const res = await fetch("https://grinnellvaccine-server.herokuapp.com/" + emailToken);
+      const res = await fetch(
+        "https://grinnellvaccine-server.herokuapp.com/" + emailToken
+      );
       const resJSON = await res.json();
       console.log(resJSON);
       setZipcode(resJSON.zipcode);
