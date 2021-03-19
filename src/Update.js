@@ -16,7 +16,7 @@ export default function Update() {
     e.preventDefault();
     console.log(emailToken);
     const matchedZip = zips.filter(
-      (a) => a.fields.zip === this.state.zipcode
+      (a) => a.fields.zip === zipcode
     )[0];
     console.log(matchedZip);
     if (matchedZip === undefined) {
