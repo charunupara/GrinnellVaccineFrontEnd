@@ -99,15 +99,6 @@ class Form extends React.Component {
   render() {
     return (
       <>
-        <p>
-          Enter your <strong>email</strong>, <strong>zipcode</strong>, and{" "}
-          <strong>max travel distance</strong> below to receive updates on the
-          availability of COVID vaccine appointments in Iowa.
-        </p>
-        <p>
-          We will send you an alert when appointments are available within the
-          max distance from your location.
-        </p>
         <form onSubmit={this.handleSubmit}>
           <input
             type="email"
