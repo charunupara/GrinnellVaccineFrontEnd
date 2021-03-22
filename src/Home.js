@@ -11,11 +11,18 @@ function Home() {
           availability of COVID vaccine appointments in Iowa.
         </p>
         <p>
-          We will send you an alert when appointments are available within the
+          We will send you an alert the minute appointments become available within the
           max distance from your location.
         </p>
       <Form />
       <Footer />
+      <p>
+          Visit{" "}
+          <a target="_blank" href="https://www.vaccinespotter.org/IA/">
+            Vaccine Spotter
+          </a>{" "}
+          to view current availability.
+        </p>
     </div>
    
 
