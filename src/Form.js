@@ -163,6 +163,13 @@ class Form extends React.Component {
           </a>{" "}
           to view current availability.
         </p>
+        <p>
+          Please use {" "}
+          <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSc88PoxetJhZ62R5QM-6ddvYfEEGVj26kF1kuUWZkhKYDhF8Q/viewform">
+            this form
+          </a>{" "}
+          to contact us.
+        </p>
         <div id="footer-text">
           <p id="disclaimer">
             Disclaimer: Vaccine availability data is collected from
