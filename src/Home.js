@@ -1,4 +1,5 @@
 import Form from './Form';
+import Footer from './Footer';
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
           max distance from your location.
         </p>
       <Form />
+      <Footer />
     </div>
    
 
